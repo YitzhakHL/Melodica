@@ -1,0 +1,27 @@
+<?php
+
+# Host and port config.
+$host = 'localhost';
+$port = 8000;
+$docroot = realpath(__DIR__ . '/../../public');
+
+# console log
+echo  <<<SHELL
+
+\033[0;37;41m>>> NEVER USE THIS IN PRODUCTION <<<\033[0m
+
+Melodica - PHP Develoment Server v1
+PHP Server started on http://$host:$port
+Server root: $docroot
+\n
+SHELL;
+
+# shell script
+$command = sprintf(
+    'php -S %s:%d -t %s',
+    escapeshellarg($host),
+    $port,
+    escapeshellarg($docroot)
+);
+
+passthru($command);
